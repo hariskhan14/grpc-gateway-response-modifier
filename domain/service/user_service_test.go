@@ -30,4 +30,14 @@ func TestUserService_GetUser(t *testing.T) {
 		assert.Equal(http.StatusNotAcceptable, resp.StatusCode)
 		assert.Equal("application/json", resp.Header.Get("content-type"))
 	})
+
+	t.Run("supported version", func(t *testing.T) {
+		req, _ := http.NewRequest(http.MethodGet, url, nil)
+		req.Header.Set("Version", "1.0")
+
+		resp, err := client.Do(req)
+		assert.NoError(err)
+		assert.Equal(http.StatusOK, resp.StatusCode)
+		assert.Equal("application/json", resp.Header.Get("content-type"))
+	})
 }
