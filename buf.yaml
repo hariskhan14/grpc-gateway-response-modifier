@@ -1,0 +1,14 @@
+version: v1
+name: buf.build/haris/grpc-gateway-apis
+deps:
+  - buf.build/googleapis/googleapis
+breaking:
+  use:
+    - FILE
+lint:
+  use:
+    - DEFAULT
+  except:
+    - PACKAGE_VERSION_SUFFIX
+
+  enum_zero_value_suffix: _UNKNOWN
